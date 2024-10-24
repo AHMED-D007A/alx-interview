@@ -44,4 +44,3 @@ if __name__ == "__main__":
                     i = 0
     except KeyboardInterrupt:
         print_stats(filesSize, dec)
-        raise
