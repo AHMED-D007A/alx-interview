@@ -2,8 +2,17 @@
 """
 a script that reads stdin line by line and computes metrics
 """
-import sys, signal
+import sys
 
+
+def print_stats(files_size, counter200, counter401, counter403, counter404, counter405, counter500):
+    print(f"File size: {files_size}")
+    print(f"200: {counter200}")
+    print(f"401: {counter401}")
+    print(f"403: {counter403}")
+    print(f"404: {counter404}")
+    print(f"405: {counter405}")
+    print(f"500: {counter500}")
 
 try:
     i = 0
@@ -32,18 +41,7 @@ try:
         i += 1
         if i == 10:
             i = 0
-            print(f"File size: {filesSize}")
-            print(f"200: {counter200}")
-            print(f"401: {counter401}")
-            print(f"403: {counter403}")
-            print(f"404: {counter404}")
-            print(f"405: {counter405}")
-            print(f"500: {counter500}")
+            print_stats(filesSize, counter200, counter401, counter403, counter404, counter405, counter500)
 except KeyboardInterrupt:
-    print(f"File size: {filesSize}")
-    print(f"200: {counter200}")
-    print(f"401: {counter401}")
-    print(f"403: {counter403}")
-    print(f"404: {counter404}")
-    print(f"405: {counter405}")
-    print(f"500: {counter500}")
+    print_stats(filesSize, counter200, counter401, counter403, counter404, counter405, counter500)
+    raise
