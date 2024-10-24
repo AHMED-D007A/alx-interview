@@ -1,8 +1,16 @@
 #!/usr/bin/python3
+"""
+a script that reads stdin line by line and computes metrics
+"""
+
+
 import sys
 
 
 def print_stats(files_size, counter200, counter401, counter403, counter404, counter405, counter500):
+    """
+    print the stats
+    """
     print(f"File size: {files_size}")
     print(f"200: {counter200}")
     print(f"401: {counter401}")
@@ -11,8 +19,10 @@ def print_stats(files_size, counter200, counter401, counter403, counter404, coun
     print(f"405: {counter405}")
     print(f"500: {counter500}")
 
-
 try:
+    """
+    the script that reads stdin line by line and computes metrics
+    """
     i = 0
     filesSize = 0
     counter200 = 0
@@ -41,5 +51,8 @@ try:
             i = 0
             print_stats(filesSize, counter200, counter401, counter403, counter404, counter405, counter500)
 except KeyboardInterrupt:
+    """
+    read the keyboard interrupt
+    """
     print_stats(filesSize, counter200, counter401, counter403, counter404, counter405, counter500)
     raise
