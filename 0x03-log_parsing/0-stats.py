@@ -43,7 +43,5 @@ if __name__ == "__main__":
                 if i == 10:
                     print_stats(filesSize, dec)
                     i = 0
-    except Exception:
-        pass
     finally:
         print_stats(filesSize, dec)
