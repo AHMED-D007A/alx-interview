@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-"""
-a script that reads stdin line by line and computes metrics
-"""
 import sys
 
 
@@ -13,6 +10,7 @@ def print_stats(files_size, counter200, counter401, counter403, counter404, coun
     print(f"404: {counter404}")
     print(f"405: {counter405}")
     print(f"500: {counter500}")
+
 
 try:
     i = 0
