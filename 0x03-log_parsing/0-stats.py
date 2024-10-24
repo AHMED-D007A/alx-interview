@@ -6,17 +6,14 @@ a script that reads stdin line by line and computes metrics
 import sys
 
 
-def print_stats(files_size, counter200, counter401, counter403, counter404, counter405, counter500):
+def print_stats(files_size, dec):
     """
     print the stats
     """
     print(f"File size: {files_size}")
-    print(f"200: {counter200}")
-    print(f"401: {counter401}")
-    print(f"403: {counter403}")
-    print(f"404: {counter404}")
-    print(f"405: {counter405}")
-    print(f"500: {counter500}")
+    for key in sorted(dec.keys()):
+        if dec[key] != 0:
+            print(f"{key}: {dec[key]}")
 
 if __name__ == "__main__":
     """
@@ -24,32 +21,40 @@ if __name__ == "__main__":
     """
     i = 0
     filesSize = 0
-    counter200 = 0
-    counter401 = 0
-    counter403 = 0
-    counter404 = 0
-    counter405 = 0
-    counter500 = 0
+    dec = {
+        "200": 0,
+        "301": 0,
+        "400": 0,
+        "401": 0,
+        "403": 0,
+        "404": 0,
+        "405": 0,
+        "500": 0
+    }
     try:
         for line in sys.stdin:
             text = line.split()
             filesSize += int(text[-1])
             if text[-2] == "200":
-                counter200 += 1
+                dec["200"] += 1
+            if text[-2] == "301":
+                dec["301"] += 1
+            if text[-2] == "400":
+                dec["400"] += 1
             if text[-2] == "401":
-                counter401 += 1
+                dec["401"] += 1
             if text[-2] == "403":
-                counter403 += 1
+                dec["403"] += 1
             if text[-2] == "404":
-                counter404 += 1
+                dec["404"] += 1
             if text[-2] == "405":
-                counter405 += 1
+                dec["405"] += 1
             if text[-2] == "500":
-                counter500 += 1
+                dec["500"] += 1
             i += 1
             if i == 10:
                 i = 0
-                print_stats(filesSize, counter200, counter401, counter403, counter404, counter405, counter500)
+                print_stats(filesSize, dec)
     finally:
-        print_stats(filesSize, counter200, counter401, counter403, counter404, counter405, counter500)
+        print_stats(filesSize, dec)
         raise
