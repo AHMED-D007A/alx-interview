@@ -3,7 +3,6 @@
 a script that reads stdin line by line and computes metrics
 """
 
-
 import sys
 
 
@@ -51,9 +50,6 @@ if __name__ == "__main__":
             if i == 10:
                 i = 0
                 print_stats(filesSize, counter200, counter401, counter403, counter404, counter405, counter500)
-    except KeyboardInterrupt:
-        """
-        read the keyboard interrupt
-        """
+    finally:
         print_stats(filesSize, counter200, counter401, counter403, counter404, counter405, counter500)
         raise
