@@ -55,6 +55,6 @@ if __name__ == "__main__":
             if i == 10:
                 i = 0
                 print_stats(filesSize, dec)
-    finally:
+    except KeyboardInterrupt:
         print_stats(filesSize, dec)
         raise
