@@ -29,7 +29,6 @@ if __name__ == "__main__":
                    '404': 0,
                    '405': 0,
                    '500': 0}
-
     try:
         for line in sys.stdin:
             args = line.split(' ')
@@ -43,5 +42,6 @@ if __name__ == "__main__":
                 if i == 10:
                     print_stats(filesSize, dec)
                     i = 0
-    finally:
+    except KeyboardInterrupt:
         print_stats(filesSize, dec)
+        raise
