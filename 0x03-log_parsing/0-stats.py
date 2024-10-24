@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-a script that reads stdin line by line and computes metrics
+log parsing
 """
 
 import sys
@@ -55,6 +55,8 @@ if __name__ == "__main__":
             if i == 10:
                 i = 0
                 print_stats(filesSize, dec)
+    except Exception:
+        pass
     except KeyboardInterrupt:
         print_stats(filesSize, dec)
         raise
