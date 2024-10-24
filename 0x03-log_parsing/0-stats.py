@@ -34,23 +34,28 @@ if __name__ == "__main__":
     try:
         for line in sys.stdin:
             text = line.split()
-            filesSize += int(text[-1])
             if text[-2] == "200":
                 dec["200"] += 1
-            if text[-2] == "301":
+            elif text[-2] == "301":
                 dec["301"] += 1
-            if text[-2] == "400":
+            elif text[-2] == "400":
                 dec["400"] += 1
-            if text[-2] == "401":
+            elif text[-2] == "401":
                 dec["401"] += 1
-            if text[-2] == "403":
+            elif text[-2] == "403":
                 dec["403"] += 1
-            if text[-2] == "404":
+            elif text[-2] == "404":
                 dec["404"] += 1
-            if text[-2] == "405":
+            elif text[-2] == "405":
                 dec["405"] += 1
-            if text[-2] == "500":
+            elif text[-2] == "500":
                 dec["500"] += 1
+            else:
+                continue
+            try:
+                filesSize += int(text[-1])
+            except Exception:
+                pass
             i += 1
             if i == 10:
                 i = 0
