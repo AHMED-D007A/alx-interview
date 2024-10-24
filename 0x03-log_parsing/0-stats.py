@@ -44,3 +44,4 @@ if __name__ == "__main__":
                     i = 0
     finally:
         print_stats(filesSize, dec)
+        raise
