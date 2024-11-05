@@ -22,7 +22,9 @@ if __name__ == "__main__":
 
     def isSafe(board, row, col):
         for i in range(col):
-            if board[i] == row or board[i] == row - col + i or board[i] == row + col - i:
+            if (board[i] == row or
+                    board[i] == row - col + i or
+                    board[i] == row + col - i):
                 return False
         return True
 
