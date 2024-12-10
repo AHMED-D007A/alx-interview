@@ -11,19 +11,24 @@ def is_prime(n):
             return False
     return True
 
+
 def isWinner(x, nums):
     """Prime Game"""
     if x < 1 or nums is None:
         return None
-    Maria = Ben = 0
+
+    n = max(nums)
+    primes = [0] * (n + 1)
+    for i in range(1, n + 1):
+        primes[i] = primes[i - 1]
+        if is_prime(i):
+            primes[i] += 1
+
+    winner = 0
     for n in nums:
-        if is_prime(n):
-            Maria += 1
-        else:
-            Ben += 1
-    if Maria == Ben:
-        return None
-    return "Maria" if Maria < Ben else "Ben"
+        winner ^= primes[n] % 2
+
+    return "Maria" if winner else "Ben"
 
 
 if __name__ == "__main__":
